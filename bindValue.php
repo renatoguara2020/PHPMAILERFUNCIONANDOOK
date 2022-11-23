@@ -16,6 +16,10 @@ $bind = $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
 
 $stmt->execute();
 $authors = $stmt->fetchAll();
+foreach ($authors as  $autor){
+
+    $stmt->fetchAll($autor);
+}
 
 var_dump($id);         // string(2)
 var_dump($bind);       // true
