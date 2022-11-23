@@ -52,10 +52,10 @@ if(!isset($_POST['email']) && $_POST['email'] != '' && $_POST['email'] != NULL){
 
     
 
-     if(!$mail->Send()) {
-        echo "Mailer Error:  $mail->ErrorInfo ";
-     } else {
-        echo "<h1>Message has been sent to renatoguara2020</h1>";
+     if(!$mail->Send()){ 
+        echo "Mailer Error:  $mail->ErrorInfo";
+     }else{
+        echo "Successfully Send";
      }
 
 ?>
