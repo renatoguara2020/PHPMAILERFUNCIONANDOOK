@@ -10,6 +10,18 @@ require './PHPMailer-master/src/PHPMailer.php';
 require './PHPMailer-master/src/SMTP.php';
 require './PHPMailer-master/src/Exception.php';
 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $erros = array();
+
+    if(isset($_POST['email']) && $_POST['email'] != '' && $_POST['email'] != null){ 
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    }else{
+
+        $erros[] = 'Digite  seu E-mail'; 
+    }
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -43,7 +55,9 @@ try {
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
+    echo "Message has been sent {$email}";
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
 }
