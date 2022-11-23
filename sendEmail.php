@@ -16,8 +16,14 @@ if(!isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != NULL){
 
     
 }
+
+if(!isset($_POST['email']) && $_POST['email'] != '' && $_POST['email'] != NULL){
+
+  $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+    
+}
   
-  $email = $_POST['email'];
   $assunto = $_POST['assunto'];
 
 
