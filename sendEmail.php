@@ -7,17 +7,18 @@
 
 
 
-
-if(!isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != NULL){
+$erros = array();
+if(isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != NULL){
 
 
   $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
-
-
     
+}else{
+
+  $erros[] = 'Digite seu nome';
 }
 
-if(!isset($_POST['email']) && $_POST['email'] != '' && $_POST['email'] != NULL){
+if(isset($_POST['email']) && $_POST['email'] != '' && $_POST['email'] != NULL){
 
   $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
