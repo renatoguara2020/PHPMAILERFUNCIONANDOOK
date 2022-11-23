@@ -8,9 +8,17 @@
 
 
 
+if(!isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != NULL){
 
+
+  $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+    
+}
   
-  $nome = $_POST['nome'];
+  $email = $_POST['email'];
+  $assunto = $_POST['assunto'];
 
 
   use PHPMailer\PHPMailer\PHPMailer;
