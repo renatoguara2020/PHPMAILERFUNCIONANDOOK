@@ -3,14 +3,12 @@ Be careful when trying to validate using PDO::PARAM_INT.
 Take this sample into account:
 
 <?php
-/* php --version
-* PHP 5.6.25 (cli) (built: Aug 24 2016 09:50:46)
-* Copyright (c) 1997-2016 The PHP Group
-* Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
-*/
+
+require_once('./pdoPHP.php');
+
 $nome = 'RENATO ALVES SOARES';
 $id = '1a';
-$stmt = $pdo->prepare('select * from author where id = :id, nome = :nome');
+$stmt = $conn->prepare('select * from author where id = :id, nome = :nome');
 $bind = $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $bind = $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
 
