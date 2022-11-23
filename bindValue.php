@@ -8,10 +8,11 @@ Take this sample into account:
 * Copyright (c) 1997-2016 The PHP Group
 * Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
 */
-
+$nome = 'RENATO ALVES SOARES';
 $id = '1a';
-$stmt = $pdo->prepare('select * from author where id = :id');
-$bind = $stm->bindValue(':id', $id, PDO::PARAM_INT);
+$stmt = $pdo->prepare('select * from author where id = :id, nome = :nome');
+$bind = $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+$bind = $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
 
 $stmt->execute();
 $authors = $stmt->fetchAll();
