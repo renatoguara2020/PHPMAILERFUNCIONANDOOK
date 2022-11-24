@@ -8,7 +8,7 @@
     exit("Access Denied: Username and password required."); 
   }else{
 
-    echo 'usuario logado';
-    header('location:site.php');
+    echo "usuario logado {$_SERVER['PHP_AUTH_USER']}";
+    // header('location:site.php');
   }
 ?>

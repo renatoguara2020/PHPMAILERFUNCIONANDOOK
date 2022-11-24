@@ -10,3 +10,5 @@ $_SESSION["sobrenome"] = "ALVES SOARES";
 
 echo "<h1>Logado RENATO ALVES SOARES </h1>";
 echo 'Hi, ' . $_SESSION["nome"] . ' ' . $_SESSION["sobrenome"];
+
+echo "usuario logado {$_SERVER['PHP_AUTH_USER']}";
