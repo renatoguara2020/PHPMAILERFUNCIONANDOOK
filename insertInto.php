@@ -1,3 +1,15 @@
+<?php
+
+// Iniciando uma sessão
+session_start();
+ 
+// Guardando dados na sessão
+$_SESSION["nome"] = "RENATO";
+$_SESSION["sobrenome"] = "ALVES SOARES";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,61 +30,75 @@
 
     <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (
-        isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != null) {
-        $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
-    }else{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (
+                isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != null) {
+                $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+            }else{
 
-        $msg = "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>";
-        echo($msg);
-    }
+                $msg = "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>";
+                echo($msg);
+            }
 
-    if (
-        isset($_POST['email']) &&
-        $_POST['email'] != '' &&
-        $_POST['email'] != null
-    ) {
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    }
+            if (
+                isset($_POST['email']) &&
+                $_POST['email'] != '' &&
+                $_POST['email'] != null
+            ) {
+                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            }
 
-    if (
-        isset($_POST['mensagem']) &&
-        $_POST['mensagem'] != '' &&
-        $_POST['mensagem'] != null
-    ) {
-        $mensagem = filter_input(
-            INPUT_POST,
-            'mensagem',
-            FILTER_SANITIZE_SPECIAL_CHARS
-        );
-    }
+            if (
+                isset($_POST['mensagem']) &&
+                $_POST['mensagem'] != '' &&
+                $_POST['mensagem'] != null
+            ) {
+                $mensagem = filter_input(
+                    INPUT_POST,
+                    'mensagem',
+                    FILTER_SANITIZE_SPECIAL_CHARS
+                );
+            }
 
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=mydatabase', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            try {
+                $pdo = new PDO('mysql:host=localhost;dbname=mydatabase', 'root', '');
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $consulta =
-            'INSERT INTO usuarios (nome, email, mensagem, dataAtual) VALUES(:nome, :email, :mensagem, NOW() )';
-        $stmt = $pdo->prepare($consulta);
+                $consulta =
+                    'INSERT INTO usuarios (nome, email, mensagem, dataAtual) VALUES(:nome, :email, :mensagem, NOW() )';
+                $stmt = $pdo->prepare($consulta);
 
-        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':mensagem', $mensagem, PDO::PARAM_STR);
-        $stmt->execute();
-        echo '<div class="alert alert-success" role="alert">
-                     Successfully Added
-            </div>';
+                $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                $stmt->bindParam(':mensagem', $mensagem, PDO::PARAM_STR);
+                $stmt->execute();
+                echo '<div class="alert alert-success" role="alert">
+                            Successfully Added
+                    </div>';
 
-    } catch (PDOException $e) {
-        echo 'Error:' . $e->getMessage();
+            } catch (PDOException $e) {
+                echo 'Error:' . $e->getMessage();
 
-        echo '<div class="alert alert-danger" role="alert">Erro ao tentar salvar usuario</div>';
-    }
-} ?>
+                echo '<div class="alert alert-danger" role="alert">Erro ao tentar salvar usuario</div>';
+            }
+    } 
+    ?>
 
+    <?php
 
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+            
+        }else{
 
+            echo 'Hi, ' . $_SESSION["nome"] . ' ' . $_SESSION["sobrenome"];
+            header('location:site.php');
+
+            
+        }
+            // Acessando os dados da sessão
+
+    ?>
     <form action="" method="POST">
         <label class="form-label">Seu nome</label>
         <input type="text" name="nome" class="form-control">
@@ -185,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="copy-menu">
                             <a href="">Terms</a>
                             <a href="">Privacy</a>
-                            <a href="https://htmlcodex.com">Author</a>
+                            <a href="https">Author</a>
                         </div>
                     </div>
                 </div>
