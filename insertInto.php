@@ -1,4 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="footer-2.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (
@@ -41,28 +59,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':mensagem', $mensagem, PDO::PARAM_STR);
         $stmt->execute();
+        echo '<div class="alert alert-success" role="alert">
+        Successfully Added
+      </div>';
+
     } catch (PDOException $e) {
         echo 'Error:' . $e->getMessage();
+
+        echo '<div class="alert alert-danger" role="alert">Erro ao tentar salvar usuario</div>';
     }
 } ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="footer-2.css" rel="stylesheet">
-    <title>Document</title>
-</head>
-
-<body>
     <form action="" method="POST">
         <label class="form-label">Seu nome</label>
         <input type="text" name="nome" class="form-control">

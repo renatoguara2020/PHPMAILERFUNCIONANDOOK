@@ -1,7 +1,3 @@
-Be careful when trying to validate using PDO::PARAM_INT.
-
-Take this sample into account:
-
 <?php
 
 require_once('./pdoPHP.php');
