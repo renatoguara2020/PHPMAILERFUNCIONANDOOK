@@ -2,6 +2,8 @@
 // Iniciando uma sessão
 session_start();
  
+
+print_r($_SESSION);
 // Guardando dados na sessão
 $_SESSION["nome"] = "RENATO";
 $_SESSION["sobrenome"] = "ALVES SOARES";

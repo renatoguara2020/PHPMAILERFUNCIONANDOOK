@@ -6,5 +6,9 @@
     header('HTTP/1.1 401 Unauthorized'); 
     header('WWW-Authenticate: Basic realm="Password For Blog"'); 
     exit("Access Denied: Username and password required."); 
-  } 
+  }else{
+
+    echo 'usuario logado';
+    header('location:site.php');
+  }
 ?>

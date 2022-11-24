@@ -75,7 +75,7 @@ $_SESSION["sobrenome"] = "ALVES SOARES";
                 $stmt->execute();
                 echo '<div class="alert alert-success" role="alert">
                             Successfully Added
-                    </div>';
+                      </div>';
 
             } catch (PDOException $e) {
                 echo 'Error:' . $e->getMessage();
