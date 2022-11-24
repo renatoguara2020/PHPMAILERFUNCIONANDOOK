@@ -20,11 +20,12 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (
-        isset($_POST['nome']) &&
-        $_POST['nome'] != '' &&
-        $_POST['nome'] != null
-    ) {
+        isset($_POST['nome']) && $_POST['nome'] != '' && $_POST['nome'] != null) {
         $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+    }else{
+
+        $msg = "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>";
+        echo($msg);
     }
 
     if (
@@ -60,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':mensagem', $mensagem, PDO::PARAM_STR);
         $stmt->execute();
         echo '<div class="alert alert-success" role="alert">
-        Successfully Added
-      </div>';
+                     Successfully Added
+            </div>';
 
     } catch (PDOException $e) {
         echo 'Error:' . $e->getMessage();
@@ -80,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="email" class="form-control">
         <br>
         <label class="form-label">Sua mensagem</label>
-        <textarea name="mensagem" id="" cols="10" rows="5" class="form-control"></textarea>
+        <textarea name="mensagem" id="" cols="5" rows="3" class="form-control"></textarea>
         <br><br>
         <button type="submit" class="btn btn-primary mb-3">Enviar</button>
     </form>
@@ -177,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="copy-text">
-                            <p>&copy; <a href="#">RENATO ALVES SOARES</a>. All Rights Reserved.</p>
+                            <p>&copy; <a href="#">RENATO ALVES SOARES</a>. All Rights Reserved. 2022</p>
                         </div>
                     </div>
                     <div class="col-md-6">
