@@ -63,6 +63,7 @@ $_SESSION["sobrenome"] = "ALVES SOARES";
             try {
                 $pdo = new PDO('mysql:host=localhost;dbname=mydatabase', 'root', '');
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
                 $consulta =
                     'INSERT INTO usuarios (nome, email, mensagem, dataAtual) VALUES(:nome, :email, :mensagem, NOW() )';
