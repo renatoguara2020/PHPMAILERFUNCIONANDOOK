@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <label class="form-label">Sua mensagem</label>
         <textarea name="mensagem" id="" cols="30" rows="10" class="form-control"></textarea>
         <br>
-        <button type="submit">Enviar</button>
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
     </form>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
